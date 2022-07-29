@@ -15,13 +15,13 @@ As a result, there is now another version of the preprocessor compatible with Hi
 
 To compile a full version of the preprocessor that can be used in a cross-compiler it is necessary to execute the command
 
-gcc -O2 -ocpp_new3 cpp.c cpy.c getargs.c fname.c
+        gcc -O2 -ocpp_new3 cpp.c cpy.c getargs.c fname.c
 
 To create a compact version to run on CP/M, you must use the "#define SMALL" directive. In this case, an executable file will be created that corresponds in its capabilities to the original version of the CPP.COM preprocessor from Hi-Tech C compiler v3.09.
 
 Command
 
-zc3 -O -DSMALL -CPM -o cpp_new3 cpp.c cpy.c
+        zc3 -O -DSMALL -CPM -o cpp_new3 cpp.c cpy.c
 
 creates an executable file cpp_new3.com for CP/M.
 
