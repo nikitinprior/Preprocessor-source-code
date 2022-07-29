@@ -21,7 +21,7 @@ To create a compact version to run on CP/M, you must use the "#define SMALL" dir
 
 Command
 
-zc3 -O -DSMALL -CPM -o cpp_new3 cpp.c cpy.c getargs.c fname.c
+zc3 -O -DSMALL -CPM -o cpp_new3 cpp.c cpy.c
 
 creates an executable file cpp_new3.com for CP/M.
 
@@ -81,86 +81,86 @@ The full list of commands is
  
 Plus additionally
 
--help and -version
+        -help and -version
  
 The differences between the SMALL and full version are The full version uses different code for buffers and the symbol table to allow programs with larger number of #defines. It also supports larger definitions
 
 Additional command line options
 
--noinclude will not use the INCDIR80 path
+        -noinclude will not use the INCDIR80 path
 
--undef     will remove the z80 predefined
+        -undef     will remove the z80 predefined
 
--p         warns of extra tokens in directives
+        -p         warns of extra tokens in directives
 
--H         shows the include files on standard error (see below why this is useful)
+        -H         shows the include files on standard error (see below why this is useful)
 
--M         generates make dependencies for makefile usage
+        -M         generates make dependencies for makefile usage
 
--Y         allows you to specify a system include directory other than through INCDIR80
+        -Y         allows you to specify a system include directory other than through INCDIR80
 
--U         Remove an initial definition of name (only really applicable for predefined z80)
+        -U         Remove an initial definition of name (only really applicable for predefined z80)
 
--help      show help screen
+        -help      show help screen
 
--version   show version info
+        -version   show version info
 
 Of these -noinclude, -p, -U are not overly useful and -undef could be implemented by using #undef z80 in your code Note -Y is different to -I due to the search order for <includes> The use of a single '–' for the longer options is as per the original source, it would be trivial to convert to use '–' which would be more consistent with current usage.
  
 You might try using -H to see which file it cannot find.
 For example if I try
 
-cpp -H cpp.c >/dev/null
+        cpp -H cpp.c >/dev/null
 
 with INCDIR80 set to /mnt/d/local/lib/cpm/include80/
 
 It shows
 
-./cpp.h
+        ./cpp.h
         
-/mnt/d/local/lib/cpm/include80/ctype.h
+        /mnt/d/local/lib/cpm/include80/ctype.h
         
-/mnt/d/local/lib/cpm/include80/limits.h
+        /mnt/d/local/lib/cpm/include80/limits.h
         
-/mnt/d/local/lib/cpm/include80/stdarg.h
+        /mnt/d/local/lib/cpm/include80/stdarg.h
         
-/mnt/d/local/lib/cpm/include80/stdio.h
+        /mnt/d/local/lib/cpm/include80/stdio.h
         
-/mnt/d/local/lib/cpm/include80/stdlib.h
+        /mnt/d/local/lib/cpm/include80/stdlib.h
         
-/mnt/d/local/lib/cpm/include80/string.h
+        /mnt/d/local/lib/cpm/include80/string.h
         
-cpp.c: line 94: Can't find include file fcntl.h
+        cpp.c: line 94: Can't find include file fcntl.h
         
-cpp.c: line 95: Can't find include file unistd.h
+        cpp.c: line 95: Can't find include file unistd.h
         
-./version.h
+        ./version.h
  
 Here the two missing files are because I didn’t use -DCPM to indicate that I am doing a build using CP/M include files
 
 Running
 
-cpp -H -DCPM cpp.c >/dev/null
+        cpp -H -DCPM cpp.c >/dev/null
 
 Gives
 
-./cpp.h
+        ./cpp.h
         
-/mnt/d/local/lib/cpm/include80/ctype.h
+        /mnt/d/local/lib/cpm/include80/ctype.h
         
-/mnt/d/local/lib/cpm/include80/limits.h
+        /mnt/d/local/lib/cpm/include80/limits.h
         
-/mnt/d/local/lib/cpm/include80/stdarg.h
+        /mnt/d/local/lib/cpm/include80/stdarg.h
         
-/mnt/d/local/lib/cpm/include80/stdio.h
+        /mnt/d/local/lib/cpm/include80/stdio.h
         
-/mnt/d/local/lib/cpm/include80/stdlib.h
+        /mnt/d/local/lib/cpm/include80/stdlib.h
         
-/mnt/d/local/lib/cpm/include80/string.h
+        /mnt/d/local/lib/cpm/include80/string.h
         
-/mnt/d/local/lib/cpm/include80/unixio.h
+        /mnt/d/local/lib/cpm/include80/unixio.h
         
-./version.h
+        ./version.h
         
  
 Note no missing files
