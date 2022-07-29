@@ -52,18 +52,31 @@ The help command is
 -help                     (single -)
 
 The full list of commands is
+
         -C      Pass all comments.
+        
         -H      Print the path names of include files on standard error.
+        
         -M      Generate a list of dependencies and write them to the output.
+        
         -p      Warn of extra tokens in directives.
+        
         -P      Do not include line control information in the preprocessor output.
+        
         -R      Allow recursive macros.
+        
         -noinclude Ignore standard system include path.
+        
         -undef  Remove all initially predefined macros.
+        
         -Dname  Defines name as 1.
+        
         -Dname=var Defines name as val.
+        
         -Idirectory Adds directory to the search path.
+        
         -Uname  Remove an initial definition of name.
+        
         -Ydirectory Uses directory instead of the standard system include directory.
  
 Plus additionally
@@ -71,15 +84,25 @@ Plus additionally
 -help and -version
  
 The differences between the SMALL and full version are The full version uses different code for buffers and the symbol table to allow programs with larger number of #defines. It also supports larger definitions
+
 Additional command line options
+
 -noinclude will not use the INCDIR80 path
+
 -undef     will remove the z80 predefined
+
 -p         warns of extra tokens in directives
+
 -H         shows the include files on standard error (see below why this is useful)
+
 -M         generates make dependencies for makefile usage
+
 -Y         allows you to specify a system include directory other than through INCDIR80
+
 -U         Remove an initial definition of name (only really applicable for predefined z80)
+
 -help      show help screen
+
 -version   show version info
 
 Of these -noinclude, -p, -U are not overly useful and -undef could be implemented by using #undef z80 in your code Note -Y is different to -I due to the search order for <includes> The use of a single '–' for the longer options is as per the original source, it would be trivial to convert to use '–' which would be more consistent with current usage.
@@ -94,14 +117,23 @@ with INCDIR80 set to /mnt/d/local/lib/cpm/include80/
 It shows
 
 ./cpp.h
+        
 /mnt/d/local/lib/cpm/include80/ctype.h
+        
 /mnt/d/local/lib/cpm/include80/limits.h
+        
 /mnt/d/local/lib/cpm/include80/stdarg.h
+        
 /mnt/d/local/lib/cpm/include80/stdio.h
+        
 /mnt/d/local/lib/cpm/include80/stdlib.h
+        
 /mnt/d/local/lib/cpm/include80/string.h
+        
 cpp.c: line 94: Can't find include file fcntl.h
+        
 cpp.c: line 95: Can't find include file unistd.h
+        
 ./version.h
  
 Here the two missing files are because I didn’t use -DCPM to indicate that I am doing a build using CP/M include files
@@ -113,14 +145,23 @@ cpp -H -DCPM cpp.c >/dev/null
 Gives
 
 ./cpp.h
+        
 /mnt/d/local/lib/cpm/include80/ctype.h
+        
 /mnt/d/local/lib/cpm/include80/limits.h
+        
 /mnt/d/local/lib/cpm/include80/stdarg.h
+        
 /mnt/d/local/lib/cpm/include80/stdio.h
+        
 /mnt/d/local/lib/cpm/include80/stdlib.h
+        
 /mnt/d/local/lib/cpm/include80/string.h
+        
 /mnt/d/local/lib/cpm/include80/unixio.h
+        
 ./version.h
+        
  
 Note no missing files
 
