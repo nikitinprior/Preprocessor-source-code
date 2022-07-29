@@ -3,9 +3,9 @@ Mark Ogden version
 
 In reconstructing the C code, the main challenge for me was:
 
-1.) adding to the Hi-Tech C compiler v3.09 preprocessor the ability to handle C++-style comments;
-2.) compatibility with the original preprocessor;
-3.) Maintaining an acceptable size of the new executable file to be able to work in the CP/M operating system.
+1. adding to the Hi-Tech C compiler v3.09 preprocessor the ability to handle C++-style comments;
+2. compatibility with the original preprocessor;
+3. Maintaining an acceptable size of the new executable file to be able to work in the CP/M operating system.
 
 I managed to meet these requirements, but in an effort to make the preprocessor program as similar to the original as possible, I kept the errors of the original version in the new preprocessor, although Joerg Schilling corrected them in his update.
 
