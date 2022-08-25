@@ -165,3 +165,5 @@ Gives
  
 Note no missing files
 
+A bug has been fixed in the cpp.c program.
+ Andrey Nikitin 25-08-2022
