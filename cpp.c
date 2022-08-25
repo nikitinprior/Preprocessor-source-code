@@ -1002,7 +1002,7 @@ STATIC char *doincl(register char *p) {
             strcpy(nfil, filname);
         else {
             strcpy(nfil, *dirp);
-#if defined(unix) || defined(_WIN32)
+#if defined(__linux__) || defined(_WIN32) || defined(__APPLE__)
             strcat(nfil, "/");
 #endif
             strcat(nfil, filname);
